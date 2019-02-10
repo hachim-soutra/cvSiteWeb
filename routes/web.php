@@ -17,8 +17,32 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('cvs', 'CvController');
-Route::get('/getexperiences/{id}','CvController@getExperiences');
-Route::post('/addexperience', 'CvController@addExperience');
-Route::put('/updateexperience','CvController@updateExperience');
+Route::resources([
+    'cvs'=> 'CvController',
+    'experiences'=> 'ExperienceController',
+    ]);
+    
+Route::get('/getdata/{id}','CvController@getdata');
+
+
+Route::put('/updateformation','FormationController@updateformation');
+Route::post('/addformation', 'FormationController@addformation');
+Route::delete('/deleteformation/{id}','FormationController@deleteformation' );
+
+Route::put('/updateexperience','ExperienceController@updateExp');
+Route::post('/addexperience', 'ExperienceController@addExperience');
+Route::delete('/deleteexperience/{id}','ExperienceController@deleteExperiences' );
+
+
+Route::put('/updatecompetence','CompetenceControoler@updatecompetence');
+Route::post('/addcompetence', 'CompetenceControoler@addcompetence');
+Route::delete('/deletecompetence/{id}','CompetenceControoler@deletecompetence' );
+
+Route::put('/updateprojet','PortfolioController@updateprojet');
+Route::post('/addprojet', 'PortfolioController@addprojet');
+Route::delete('/deleteprojet/{id}','PortfolioController@deleteprojet' );
+
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');

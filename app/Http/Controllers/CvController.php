@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use App\Cv;
 use App\Experience;
@@ -109,30 +110,20 @@ class CvController extends Controller
         $cv->delete();
         return redirect('cvs');
     }
-    public function getExperiences($id){
+    public function getdata($id){
         $cv = Cv::find($id);
-        return $cv->experiences()->orderBy('debut','desc')->get();
+
+        $experiences = $cv->experiences()->orderBy('debut','desc')->get();
+        $formations = $cv->formations()->orderBy('debut','desc')->get();
+        $competences = $cv->competences()->orderBy('updated_at','desc')->get();
+        $projets = $cv->projets()->orderBy('updated_at','desc')->get();
+
+        return Response()->json([
+            'experiences' => $experiences,
+            'formations'  => $formations,
+            'competences' => $competences,
+            'projets'     =>  $projets
+            ]);
     }
-    public function addExperience(Request $request){
-        $exp = new Experience;
-        $exp->titre = $request->input('titre');
-        $exp->description = $request->input('description');
-        $exp->debut = $request->input('debut');
-        $exp->fin = $request->input('fin');
-        $exp->cv_id = $request->input('cv_id');
-        $exp->save();
-        
-        return $exp;
-    }
-    public function updateExperience(Request $request)
-    {
-        $exp         = Experience::find($request->id);
-        $exp->title  = $request->input('titre');
-        $exp->body   = $request->input('description');
-        $exp->fin    = $request->input('fin');
-        $exp->debut  = $request->input('debut');
-        $exp->save();
-       
-        return Response()->json(['etat' => true],200);
-    }
+  
 }
