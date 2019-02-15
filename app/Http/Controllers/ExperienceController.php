@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Experience;
-use App\Formation;
-use App\Competence;
-use App\Portfolio;
+
 
 class ExperienceController extends Controller
 {
@@ -26,7 +24,7 @@ class ExperienceController extends Controller
 
     
     
-    public function updateExp(Request $request)
+    public function updateExperience(Request $request)
     {
         
         $exp = Experience::find( $request->id);
@@ -41,7 +39,7 @@ class ExperienceController extends Controller
     }
 
    
-    public function deleteexperiences($id)
+    public function deleteExperience($id)
     {
         $exp = Experience::find($id);
         $exp->delete();

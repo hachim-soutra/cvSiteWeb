@@ -75,18 +75,18 @@ var app = new Vue({
           })
         },
         editExperience : function(experience){
-          this.open = true;
+          this.open.experience = true;
           this.title = 'close';
-          this.edit = true;
+          this.edit.experience = true;
           this.experience = experience; 
         } ,
         supprimeExperience : function(experience){
-          axios.delete(window.Laravel.url + '/experiences/'+experience.id)
+          axios.delete(window.Laravel.url + '/deleteexperience/'+experience.id)
             .then(response => {
               if(response.data.etat){
                 var p = this.experiences.indexOf(experience);
                 this.experiences.splice(p , 1);
-                console.log('test')
+                
               }
             })
             .catch(error => {
@@ -143,7 +143,7 @@ var app = new Vue({
           this.formation = experience; 
         } ,
         supprimeformation : function(experience){
-          axios.delete(window.Laravel.url + '/formations/'+experience.id)
+          axios.delete(window.Laravel.url + '/deleteformation/'+experience.id)
             .then(response => {
               if(response.data.etat){
                 var p = this.formations.indexOf(experience);

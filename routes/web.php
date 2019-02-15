@@ -29,9 +29,9 @@ Route::put('/updateformation','FormationController@updateformation');
 Route::post('/addformation', 'FormationController@addformation');
 Route::delete('/deleteformation/{id}','FormationController@deleteformation' );
 
-Route::put('/updateexperience','ExperienceController@updateExp');
+Route::put('/updateexperiences','ExperienceController@updateExperience');
 Route::post('/addexperience', 'ExperienceController@addExperience');
-Route::delete('/deleteexperience/{id}','ExperienceController@deleteExperiences' );
+Route::delete('/deleteexperience/{id}','ExperienceController@deleteExperience' );
 
 
 Route::put('/updatecompetence','CompetenceControoler@updatecompetence');

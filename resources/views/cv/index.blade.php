@@ -6,7 +6,14 @@ cv >>> index
 
 @section('content')
     <div class="container">
+            @if(session()->has('succes'))
+                <div class="alert alert-success" role="alert">
+                    {{ session()->get('succes') }}
+                </div>
+            @endif
+                
         <h2>list cvs</h2>
+
         <a class="float-right" href="{{url('cvs/create')}} "><i class="fa fa-plus-circle" aria-hidden="true"></i> ajouter nouveau cv</a>
         <br>
         <div class="row">
@@ -22,8 +29,12 @@ cv >>> index
                          {{ csrf_field() }}
                          {{ method_field('DELETE')}}
                          <a class="btn btn-light" href="{{ url('cvs/'.$cv->id) }}"> Show</a>
+                         @can('update', $cv)
                          <a class="btn btn-primary" href="{{ url('cvs/'.$cv->id.'/edit') }}"> Edit</a>
-                         <button class="btn btn-danger" type="submit"> Delete</button>
+                         @endcan
+                         @can('delete', $cv)
+                           <button class="btn btn-danger" type="submit"> Delete</button>
+                         @endcan
                         </form>
                         
                         

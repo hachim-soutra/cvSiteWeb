@@ -65,7 +65,7 @@ cv show
                         </div>
                         <div class="col-md-2 text-center" >
                           <br>
-                          <button class="btn btn-outline-success float-right"  @click="editExperience(exp)"> 
+                          <button class="btn btn-outline-success float-right" @click="editExperience(exp)"> 
                             <i class="fa fa-pencil" aria-hidden="true"></i> modifier
                           </button>
                         </div>
@@ -185,7 +185,7 @@ cv show
                   <div class="form-row">
                     <div class="form-group col-md-12">
                       <label for="competence">competence :</label>
-                      <input type="text" class="form-control"  placeholder="competence" v-model="competence.competence">
+                      <input type="text" class="form-control"  placeholder="competence" v-model="competence.competences">
                     </div>
                   </div>
                   <button type="button" class="btn btn-primary" v-if="!edit.competence" @click="addcompetence">Ajouter</button>
@@ -202,13 +202,17 @@ cv show
                         </div>
                         <div class="col-md-2 text-center" >
                           <br>
-                          <button class="btn btn-outline-success float-right"  @click="editcompetence(exp)"> 
+                         
+                          <button  class="btn btn-outline-success float-right" @click="editcompetence(exp)"> 
                             <i class="fa fa-pencil" aria-hidden="true"></i> modifier
                           </button>
+                        
+                         
+                          
                         </div>
                         <div class="col-md-2 text-center"> 
                             <br>
-                          <button class="btn btn-outline-danger float-right"  @click="supprimecompetence(exp)"> 
+                          <button class="btn btn-outline-danger float-right" v-show="show"  @click="supprimecompetence(exp)"> 
                             <i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer
                             </button>
                         </div>
@@ -245,12 +249,8 @@ cv show
                           </div>
                           <div class="form-group">
                             <label for="body">description :</label>
-                            <textarea class="form-control" v-model="projet.body" placeholder="description...."></textarea>
+                            <textarea class="form-control" v-model="projet.presentation" placeholder="description...."></textarea>
                           </div>
-                          <div class="form-group">
-                              <label for="photo">photo :</label>
-                              <input type="file" class="form-control" v-model="projet.photo" placeholder="Enter photo ......">
-                            </div>
                           
                           <button type="button" class="btn btn-primary" v-if="!edit.projet" @click="addprojet">Ajouter</button>
                           <button type="button" class="btn btn-primary" v-else @click="updateprojet">Modifier</button>
@@ -264,7 +264,7 @@ cv show
                                 <div class="col-md-8 " >
                                   
                                     <h2> @{{ exp.title}} </h2>           
-                                    <p class="text-primary">  @{{ exp.body}}</p>
+                                    <p class="text-primary">  @{{ exp.presentation}}</p>
                                 </div>
                                 <div class="col-md-2 text-center" >
                                   <br>

@@ -5,7 +5,7 @@ cv >>> edit
 @endsection
 
 @section('content')
-<form action="{{ url('cvs/'.$cv->id) }}" method="post">
+<form action="{{ url('cvs/'.$cv->id) }}" enctype="multipart/form-data" method="post">
     {{ csrf_field()}}
     <input type="hidden" name="_method" value="PUT" >
     <div class="form-group">
@@ -14,7 +14,7 @@ cv >>> edit
     </div>
     <div class="form-group">
       <label for="photo">photo :</label>
-      <input type="file" class="form-control" id="photo"   placeholder="Enter photo ......">
+      <input type="file" class="form-control" id="imgUpload1" name="imgUpload1" value="{{ $cv->photo }}"   placeholder="Enter photo ......">
     </div>
     <div class="form-group">
       <label for="text"></label>
